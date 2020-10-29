@@ -1,0 +1,8 @@
+name: mltest
+channels:
+  - defaults
+dependencies:
+  - pip
+  - sklearn
+  - pip:
+    - mlflow

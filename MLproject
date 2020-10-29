@@ -1,0 +1,7 @@
+name: mltest
+
+conda_env: conda.yaml
+
+entry_points:
+  main:
+    command: "python digits_recognizer.py"
