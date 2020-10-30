@@ -1,14 +1,17 @@
+import os
+
 from sklearn.datasets import load_digits
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 from sklearn.neural_network import MLPClassifier
 from sklearn.preprocessing import StandardScaler
 import mlflow
-import os
+from sklearn.tree import DecisionTreeClassifier
+
+mlflow.sklearn.autolog()
+
 
 with mlflow.start_run():
-
-    mlflow.sklearn.autolog()
 
     #  Loading data
     digits = load_digits(as_frame=True)
@@ -49,3 +52,7 @@ with mlflow.start_run():
     with open("outputs/test.txt", "w") as f:
         f.write("hello world!")
     mlflow.log_artifacts("outputs")
+
+    print(mlp.loss_curve_)
+    for index in range(len(mlp.loss_curve_)):
+        mlflow.log_metric("Loss", mlp.loss_curve_[index], step=index+1)
