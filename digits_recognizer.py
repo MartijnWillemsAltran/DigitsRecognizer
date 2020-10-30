@@ -8,6 +8,8 @@ import os
 
 with mlflow.start_run():
 
+    mlflow.sklearn.autolog()
+
     #  Loading data
     digits = load_digits(as_frame=True)
 
