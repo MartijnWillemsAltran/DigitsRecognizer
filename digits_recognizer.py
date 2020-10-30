@@ -4,6 +4,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.neural_network import MLPClassifier
 from sklearn.preprocessing import StandardScaler
 import mlflow
+import os
 
 with mlflow.start_run():
 
@@ -39,3 +40,10 @@ with mlflow.start_run():
     print("----------------------------------------------------------------")
 
     mlflow.set_tag("TestTag", "True")
+
+    # Log an artifact (output file)
+    if not os.path.exists("outputs"):
+        os.makedirs("outputs")
+    with open("outputs/test.txt", "w") as f:
+        f.write("hello world!")
+    mlflow.log_artifacts("outputs")
