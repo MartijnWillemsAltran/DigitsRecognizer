@@ -4,4 +4,4 @@ conda_env: conda.yaml
 
 entry_points:
   main:
-    command: "python digits_recognizer.py"
+    command: "python mlflow_runner/digits_recognizer.py"
